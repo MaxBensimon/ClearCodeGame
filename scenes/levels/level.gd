@@ -24,3 +24,20 @@ func _on_player_threw_grenade(pos, direction) -> void:
 	grenade.position = pos
 	grenade.linear_velocity = direction * grenade.speed
 	$Projectiles.add_child(grenade)
+
+# When the player enteres a house, zoom in
+func _on_house_player_entered() -> void:
+	# Creating a Tween, which is a simple animation type object that moves between two values over time.
+	# It is for when an animation player node would be overkill and for simpler animations.
+	# get_tree() returns the all the nodes in the given scene tree. Here a Tween is created and saved as
+	# a variable.
+	var tween = get_tree().create_tween()
+	# Pressing ctrl+space when in an invoker gives the values needed for that function. The parameters below
+	# are almost self explanatory: get a specific node, get a specific property of that node (in string form),
+	# set the targetted or final value and set the duration of the animation.
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(1, 1), 1)
+
+# When the player exits a house, zoom out
+func _on_house_player_exited() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6, 0.6), 1)
