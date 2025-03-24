@@ -3,6 +3,9 @@ extends CharacterBody2D
 var canShoot: bool = true
 var canThrowGrenade: bool = true
 
+@export var max_speed: int = 500
+var speed: int = max_speed
+
 signal shot_laser(pos, direction)
 signal threw_grenade(pos, direction)
 
@@ -16,7 +19,7 @@ func _process(_delta: float) -> void:
 	var gun_direction = (get_global_mouse_position() - position).normalized()
 	
 	# velocity is a property of a CharacterBody. Delta is really important to set but here it happpens automatically through the velocity property.
-	velocity = direction * 500 # * delta
+	velocity = direction * speed # * delta
 	
 	# How you move a CharacterBody is just always with this method
 	move_and_slide()
@@ -28,12 +31,13 @@ func _process(_delta: float) -> void:
 	
 	if (Input.is_action_pressed("primary action")) and canShoot:
 		canShoot = false
-		
+		# Setting the one shot enabled particle to true.
+		$GPUParticles2D.emitting = true
 		# Randomly select a Marker2D as start position.
 		var laser_markers = $LaserStartPositions.get_children()
 		# Select a random marker from the list. The Godot random is a bit weird but the method below is common.
 		var selected_laser = laser_markers[randi() % laser_markers.size()]
-		print(selected_laser)
+		#print(selected_laser)
 		
 		# Send a random start position with the emit. The position needs to be global:
 		# .position is always relative to the parent, i.e. it is the local_position.

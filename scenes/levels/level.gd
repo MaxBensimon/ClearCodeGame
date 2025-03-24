@@ -1,12 +1,11 @@
 extends Node2D
 
+# Creating a class with a given name that lets you inherit from it.
+class_name LevelParent
+
 # Preloading the laser scene so that it can be used in the level scene without it being a node in the hierarchy at ready.
 var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
 var grenade_scene: PackedScene = preload("res://scenes/projectiles/grenade.tscn")
-
-func _on_gate_player_entered_gate(body) -> void:
-	print("Player entered gate.")
-	print(body)
 
 func _on_player_shot_laser(pos, direction) -> void:
 	# Instantiating a laser scene from the preload above.

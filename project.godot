@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ClearCode-Game"
-run/main_scene="res://scenes/levels/level.tscn"
+run/main_scene="res://scenes/levels/outside.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -58,3 +58,11 @@ down={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(143, 19),"global_position":Vector2(152, 65),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Objects"
+2d_physics/layer_4="Projectiles"
+2d_physics/layer_5="Items & Zones"
