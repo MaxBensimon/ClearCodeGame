@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://s0beyq1ke5k2"]
+[gd_scene load_steps=7 format=3 uid="uid://s0beyq1ke5k2"]
 
 [ext_resource type="Theme" uid="uid://bln3rnt5cq36g" path="res://scenes/user_interface/main_theme.tres" id="1_k8ilk"]
 [ext_resource type="Texture2D" uid="uid://cx52xw1l567q" path="res://graphics/ui/bullet.png" id="1_obqq2"]
+[ext_resource type="Script" path="res://scenes/user_interface/ui.gd" id="1_qut8b"]
 [ext_resource type="Texture2D" uid="uid://j8vjtbh2ew6o" path="res://graphics/ui/grenade.png" id="2_pe1ov"]
 [ext_resource type="Texture2D" uid="uid://b72b5jbcto8wu" path="res://graphics/ui/progress_bar/bg.png" id="4_sughk"]
 [ext_resource type="Texture2D" uid="uid://dyxljnfibao5y" path="res://graphics/ui/progress_bar/progress.png" id="5_1qg1i"]
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_qut8b")
 
 [node name="LaserCounter" type="Control" parent="."]
 layout_mode = 3
@@ -78,6 +80,6 @@ theme_override_constants/margin_bottom = 30
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
 layout_mode = 2
-value = 20.0
+value = 80.0
 texture_under = ExtResource("4_sughk")
 texture_progress = ExtResource("5_1qg1i")

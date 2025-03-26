@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://7r62d1e7j5qn"]
+[gd_scene load_steps=21 format=4 uid="uid://7r62d1e7j5qn"]
 
 [ext_resource type="PackedScene" uid="uid://col81yb8w2ct7" path="res://scenes/levels/level.tscn" id="1_7228n"]
 [ext_resource type="Script" path="res://scenes/levels/outside.gd" id="2_avl85"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bi81m1fipbuou" path="res://scenes/houses/house1.tscn" id="11_upmjp"]
 [ext_resource type="PackedScene" uid="uid://ye1wj5t7ldng" path="res://scenes/objects/light_fan_animation.tscn" id="12_p5usu"]
 [ext_resource type="PackedScene" uid="uid://b7osxlk6nvw13" path="res://scenes/objects/steam_vent.tscn" id="13_c4s0q"]
+[ext_resource type="PackedScene" uid="uid://bqek1h4nvmt4l" path="res://scenes/items/item.tscn" id="16_484sf"]
+[ext_resource type="PackedScene" uid="uid://dmaj4e4beskk5" path="res://scenes/enemies/scout.tscn" id="17_rbtpv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_syyip"]
 resource_name = "walls"
@@ -53,7 +55,11 @@ sources/2 = SubResource("TileSetAtlasSource_vhp7i")
 [node name="Outside" instance=ExtResource("1_7228n")]
 script = ExtResource("2_avl85")
 
+[node name="Gate" parent="." index="1" instance=ExtResource("2_fe32p")]
+position = Vector2(798, -612)
+
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
+z_index = -2
 texture_repeat = 2
 position = Vector2(887, 589)
 texture = ExtResource("2_t420n")
@@ -61,6 +67,7 @@ region_enabled = true
 region_rect = Rect2(-2166.25, -2283.21, 16000, 10000)
 
 [node name="TileMap" type="TileMap" parent="Ground" index="1"]
+z_index = -1
 tile_set = SubResource("TileSet_0bxyk")
 format = 2
 
@@ -136,12 +143,21 @@ frame_progress = 0.077961
 [node name="SteamVent" parent="Ground" index="15" instance=ExtResource("13_c4s0q")]
 position = Vector2(-141, 357)
 
-[node name="Gate" parent="." index="1" instance=ExtResource("2_fe32p")]
-position = Vector2(798, -612)
+[node name="Item" parent="." index="6" instance=ExtResource("16_484sf")]
+position = Vector2(718, 330)
 
-[node name="Player" parent="." index="3"]
+[node name="Item2" parent="." index="7" instance=ExtResource("16_484sf")]
+position = Vector2(756, 522)
+
+[node name="Item3" parent="." index="8" instance=ExtResource("16_484sf")]
+position = Vector2(536, 458)
+
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("17_rbtpv")]
+position = Vector2(1668, 600)
+
+[node name="Player" parent="." index="10"]
 position = Vector2(947, 290)
 
+[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
 [connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
-[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]

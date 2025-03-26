@@ -6,9 +6,30 @@ class_name LevelParent
 # Preloading the laser scene so that it can be used in the level scene without it being a node in the hierarchy at ready.
 var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
 var grenade_scene: PackedScene = preload("res://scenes/projectiles/grenade.tscn")
+var item_scene: PackedScene = preload("res://scenes/items/item.tscn")
+
+func _ready() -> void:
+	for container in get_tree().get_nodes_in_group('Container'):
+		container.connect('open', _on_container_opened) # Signal and function
+	for scout in get_tree().get_nodes_in_group('Scouts'):
+		scout.connect('laser', _on_scout_laser)
+
+func _on_container_opened(pos, direction):
+	# Create an item scene and place it at some spawn position (gotten from the function in the item's script).
+	var item = item_scene.instantiate()
+	item.position = pos
+	
+	item.direction = direction
+	$Items.add_child.call_deferred(item)
 
 func _on_player_shot_laser(pos, direction) -> void:
-	# Instantiating a laser scene from the preload above.
+	create_laser_projectile(pos, direction)
+	
+func _on_scout_laser(pos, direction):
+	create_laser_projectile(pos, direction)
+
+func create_laser_projectile(pos, direction):
+		# Instantiating a laser scene from the preload above.
 	var laser = laser_scene.instantiate() as Area2D
 	# Setting the laser position from the variable recieved by the function through the signal.
 	laser.position = pos
@@ -25,19 +46,8 @@ func _on_player_threw_grenade(pos, direction) -> void:
 	grenade.linear_velocity = direction * grenade.speed
 	$Projectiles.add_child(grenade)
 
-# When the player enteres a house, zoom in
-func _on_house_player_entered() -> void:
-	# Creating a Tween, which is a simple animation type object that moves between two values over time.
-	# It is for when an animation player node would be overkill and for simpler animations.
-	# get_tree() returns the all the nodes in the given scene tree. Here a Tween is created and saved as
-	# a variable.
-	var tween = get_tree().create_tween()
-	# Pressing ctrl+space when in an invoker gives the values needed for that function. The parameters below
-	# are almost self explanatory: get a specific node, get a specific property of that node (in string form),
-	# set the targetted or final value and set the duration of the animation.
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(1, 1), 1)
-
-# When the player exits a house, zoom out
-func _on_house_player_exited() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6, 0.6), 1)
+# Signal from player that is emitted when colliding with a item. Goes through here to get to the UI elements
+# to update them:
+#func _on_player_update_stats() -> void:
+	#$UI.update_laser_text()
+	#$UI.update_grenade_text()
