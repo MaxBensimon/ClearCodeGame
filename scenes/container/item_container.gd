@@ -7,4 +7,8 @@ class_name ItemContainer
 
 var opened: bool = false
 
+# Ignoring the unused signal warning as the analyzer is 
+# script scoped and does not understand that the signal
+# is used in the child classes.
+@warning_ignore("unused_signal")
 signal open(pos, direction)

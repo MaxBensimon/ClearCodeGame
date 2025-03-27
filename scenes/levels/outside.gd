@@ -19,9 +19,9 @@ func _on_house_player_entered() -> void:
 	# Pressing ctrl+space when in an invoker gives the values needed for that function. The parameters below
 	# are almost self explanatory: get a specific node, get a specific property of that node (in string form),
 	# set the targetted or final value and set the duration of the animation.
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(1, 1), 1)
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(.8, .8), 1)
 
 # When the player exits an outside house, zoom out
 func _on_house_player_exited() -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6, 0.6), 1)
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(.4, .4), 1)

@@ -10,7 +10,7 @@ signal shot_laser(pos, direction)
 signal threw_grenade(pos, direction)
 
 func hit():
-	print("player was hit")
+	Globals.health -= 10
 
 # Setting an underscore before delta means that it is available but the method should ignore it.
 func _process(_delta: float) -> void:

@@ -19,9 +19,22 @@ var grenade_amount: int = 5:
 		grenade_amount = value
 		stat_change.emit()
 
+var player_vulnerable: bool = true
 var health = 60:
 	set(value):
-		health = value
+	# If the value is greater than health it means that a health item was picked up, which should be possible even when invulnerable.
+		if value > health:
+			health = min(value, 100) # 'health' cannot be greater than 100.
+		else:
+			if player_vulnerable:
+				health = value
+				player_vulnerable = false
+				player_invulnerable_timer()
 		stat_change.emit()
+
+# Making a timer without using a timer node
+func player_invulnerable_timer():
+	await get_tree().create_timer(.5).timeout
+	player_vulnerable = true
 
 var player_pos: Vector2

@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://b72icecmo3ja5"]
+
+[ext_resource type="Texture2D" uid="uid://c0vqqpjuywinj" path="res://graphics/enemies/hunter/hunter.png" id="1_b86mc"]
+[ext_resource type="Script" path="res://scenes/enemies/hunter.gd" id="1_jdevu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gh1qj"]
+radius = 42.0
+height = 454.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4mqqq"]
+radius = 1702.57
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15bwb"]
+radius = 301.0
+
+[node name="Hunter" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_jdevu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_b86mc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gh1qj")
+
+[node name="NoticeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoticeArea"]
+shape = SubResource("CircleShape2D_4mqqq")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_15bwb")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 0.01
+debug_enabled = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="NavigationTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
+[connection signal="body_exited" from="NoticeArea" to="." method="_on_notice_area_body_exited"]
+[connection signal="timeout" from="Timers/NavigationTimer" to="." method="_on_navigation_timer_timeout"]
