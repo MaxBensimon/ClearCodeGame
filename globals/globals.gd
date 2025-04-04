@@ -9,6 +9,8 @@ extends Node
 
 signal stat_change
 
+var player_hit_sound: AudioStreamPlayer2D
+
 var laser_amount: int = 20:
 	set(value):
 		laser_amount = value
@@ -27,6 +29,7 @@ var health = 60:
 			health = min(value, 100) # 'health' cannot be greater than 100.
 		else:
 			if player_vulnerable:
+				player_hit_sound.play()
 				health = value
 				player_vulnerable = false
 				player_invulnerable_timer()
@@ -38,3 +41,11 @@ func player_invulnerable_timer():
 	player_vulnerable = true
 
 var player_pos: Vector2
+
+func _ready() -> void:
+	# The 'new' keyword creates a new node through the script:
+	player_hit_sound = AudioStreamPlayer2D.new()
+	# Now the AudioStreamPlayer2D's properties are accessible here even though it doesn't exist yet:
+	player_hit_sound.stream = load("res://audio/solid_impact.ogg")
+	# Add the AudioStreamPlayer2D to the scene tree:
+	add_child(player_hit_sound)

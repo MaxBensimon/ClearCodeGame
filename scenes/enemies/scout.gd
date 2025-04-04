@@ -16,6 +16,7 @@ func hit():
 		$Timers/IFrames.start()
 		health -= 10
 		$Sprite2D.material.set_shader_parameter("progress", 1)
+		$AudioStreamPlayer2D.play()
 	if health <= 0:
 		queue_free()
 

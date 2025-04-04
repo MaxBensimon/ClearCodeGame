@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvcybj8icvme"]
+[gd_scene load_steps=13 format=3 uid="uid://dvcybj8icvme"]
 
 [ext_resource type="Texture2D" uid="uid://cyi2r6whqu8vd" path="res://graphics/enemies/drone.png" id="1_7pwsd"]
 [ext_resource type="Script" path="res://scenes/enemies/drone.gd" id="1_rixhp"]
 [ext_resource type="Shader" path="res://scenes/enemies/drone.gdshader" id="2_4keqv"]
 [ext_resource type="Texture2D" uid="uid://dyfqniwnwwpd5" path="res://graphics/explosions/explosion_3.png" id="3_8vjhw"]
+[ext_resource type="AudioStream" uid="uid://bra042wfgf44a" path="res://audio/solid_impact.ogg" id="5_d742i"]
+[ext_resource type="AudioStream" uid="uid://dm7kyml837s1k" path="res://audio/explosion.wav" id="6_w212b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snc2s"]
 shader = ExtResource("2_4keqv")
@@ -63,13 +65,28 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.9),
+"times": PackedFloat32Array(1.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node/ExplosionSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_w212b")
+}],
+"times": PackedFloat32Array(0.25)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_f5xg4"]
 length = 0.001
@@ -149,6 +166,13 @@ frame = 23
 libraries = {
 "": SubResource("AnimationLibrary_v7iil")
 }
+
+[node name="Node" type="Node" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("5_d742i")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="Node"]
 
 [connection signal="body_entered" from="NoticeArea" to="." method="_on_notice_area_body_entered"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

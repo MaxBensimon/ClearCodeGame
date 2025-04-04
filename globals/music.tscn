@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1lp2k7c4p7ma"]
+
+[ext_resource type="AudioStream" uid="uid://bnpw2kg0ky1km" path="res://audio/battleThemeA.mp3" id="1_bo24r"]
+[ext_resource type="Script" path="res://globals/music.gd" id="1_qqtov"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_qqtov")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_bo24r")
+volume_db = -15.0
+autoplay = true
+
+[node name="PitchTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="PitchTimer" to="." method="_on_pitch_timer_timeout"]
