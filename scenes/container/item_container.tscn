@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cx48fdx08enbp"]
 
-[ext_resource type="Script" path="res://scenes/container/item_container.gd" id="1_wm0di"]
+[ext_resource type="Script" uid="uid://drktkjokpvbmk" path="res://scenes/container/item_container.gd" id="1_wm0di"]
 [ext_resource type="AudioStream" uid="uid://jqcx4ot62r3w" path="res://audio/container_hit.mp3" id="2_tatcm"]
 
 [node name="ItemContainer" type="StaticBody2D" groups=["Container"]]

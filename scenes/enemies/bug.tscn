@@ -1,8 +1,8 @@
 [gd_scene load_steps=44 format=3 uid="uid://dkgd7uxl4vswh"]
 
 [ext_resource type="Texture2D" uid="uid://7p585kftyyru" path="res://graphics/enemies/bug/walk/00000.png" id="1_gngyd"]
-[ext_resource type="Script" path="res://scenes/enemies/bug.gd" id="1_ypkov"]
-[ext_resource type="Shader" path="res://scenes/enemies/bug.gdshader" id="2_4b6cj"]
+[ext_resource type="Script" uid="uid://24qpgbu5is7d" path="res://scenes/enemies/bug.gd" id="1_ypkov"]
+[ext_resource type="Shader" uid="uid://ducwcpejvldo7" path="res://scenes/enemies/bug.gdshader" id="2_4b6cj"]
 [ext_resource type="Texture2D" uid="uid://cpls33jodiil" path="res://graphics/enemies/bug/attack/00010.png" id="2_nb4v7"]
 [ext_resource type="Texture2D" uid="uid://bklkpfoetdb6r" path="res://graphics/enemies/bug/walk/00001.png" id="2_x44u8"]
 [ext_resource type="Texture2D" uid="uid://cgvy7dtvl6tig" path="res://graphics/enemies/bug/attack/00011.png" id="3_dqxma"]
@@ -223,10 +223,10 @@ modulate = Color(0.137255, 0.160784, 0.117647, 1)
 material = SubResource("CanvasItemMaterial_bbrwb")
 emitting = false
 amount = 40
-process_material = SubResource("ParticleProcessMaterial_3qa8f")
 texture = ExtResource("33_b7hix")
 lifetime = 0.5
 one_shot = true
+process_material = SubResource("ParticleProcessMaterial_3qa8f")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("34_jd557")

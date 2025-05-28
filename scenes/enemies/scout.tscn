@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dmaj4e4beskk5"]
 
 [ext_resource type="Texture2D" uid="uid://15gicgfrqfj7" path="res://graphics/enemies/scout.png" id="1_qcu0k"]
-[ext_resource type="Script" path="res://scenes/enemies/scout.gd" id="1_yrmny"]
-[ext_resource type="Shader" path="res://scenes/enemies/scout.gdshader" id="2_peyes"]
+[ext_resource type="Script" uid="uid://0kjj418wfl66" path="res://scenes/enemies/scout.gd" id="1_yrmny"]
+[ext_resource type="Shader" uid="uid://b7j0kejo0pl05" path="res://scenes/enemies/scout.gdshader" id="2_peyes"]
 [ext_resource type="AudioStream" uid="uid://bra042wfgf44a" path="res://audio/solid_impact.ogg" id="4_keayf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_68rnb"]

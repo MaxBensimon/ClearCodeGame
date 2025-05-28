@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://u4xyjq7npp8p"]
 
 [ext_resource type="Texture2D" uid="uid://nifbc44ri4hg" path="res://graphics/car/main.png" id="1_kfnkc"]
-[ext_resource type="Script" path="res://scenes/enemies/car.gd" id="1_syows"]
+[ext_resource type="Script" uid="uid://ympxbhln2fb6" path="res://scenes/enemies/car.gd" id="1_syows"]
 [ext_resource type="Texture2D" uid="uid://wipai04hvg30" path="res://graphics/car/turret.png" id="3_b6dq7"]
 [ext_resource type="Texture2D" uid="uid://bu4q3wojph5k" path="res://graphics/explosions/gun.png" id="4_5vteh"]
 
@@ -69,8 +69,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p03qy"]
 _data = {
-"RESET": SubResource("Animation_rac36"),
-"laser_load": SubResource("Animation_0ov36")
+&"RESET": SubResource("Animation_rac36"),
+&"laser_load": SubResource("Animation_0ov36")
 }
 
 [node name="Car" type="PathFollow2D"]

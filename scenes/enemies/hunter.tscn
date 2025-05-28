@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://b72icecmo3ja5"]
 
-[ext_resource type="Script" path="res://scenes/enemies/hunter.gd" id="1_jdevu"]
+[ext_resource type="Script" uid="uid://bmekgqy8u53oo" path="res://scenes/enemies/hunter.gd" id="1_jdevu"]
 [ext_resource type="Texture2D" uid="uid://dio7bnn87icfc" path="res://graphics/enemies/hunter/parts/torso.png" id="2_bgu1m"]
-[ext_resource type="Shader" path="res://scenes/enemies/hunter.gdshader" id="2_jcf8r"]
+[ext_resource type="Shader" uid="uid://cshigf0hem5fr" path="res://scenes/enemies/hunter.gdshader" id="2_jcf8r"]
 [ext_resource type="Texture2D" uid="uid://c8d27qtxpd53" path="res://graphics/enemies/hunter/parts/leg_front_inner.png" id="3_u46bu"]
 [ext_resource type="Texture2D" uid="uid://c6hvpqxojqxql" path="res://graphics/enemies/hunter/parts/leg_front_outer.png" id="4_08j7c"]
 [ext_resource type="Texture2D" uid="uid://c5malpmpktbwp" path="res://graphics/enemies/hunter/parts/head.png" id="5_jqqs5"]
@@ -248,9 +248,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_befju"]
 _data = {
-"RESET": SubResource("Animation_yaexp"),
-"attack": SubResource("Animation_l05ok"),
-"walk": SubResource("Animation_hpmrv")
+&"RESET": SubResource("Animation_yaexp"),
+&"attack": SubResource("Animation_l05ok"),
+&"walk": SubResource("Animation_hpmrv")
 }
 
 [node name="Hunter" type="CharacterBody2D" groups=["Entity"]]
@@ -453,7 +453,7 @@ position = Vector2(-142, 152)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_befju")
+&"": SubResource("AnimationLibrary_befju")
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

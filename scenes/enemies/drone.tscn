@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://dvcybj8icvme"]
 
 [ext_resource type="Texture2D" uid="uid://cyi2r6whqu8vd" path="res://graphics/enemies/drone.png" id="1_7pwsd"]
-[ext_resource type="Script" path="res://scenes/enemies/drone.gd" id="1_rixhp"]
-[ext_resource type="Shader" path="res://scenes/enemies/drone.gdshader" id="2_4keqv"]
+[ext_resource type="Script" uid="uid://207xn1pv5nxc" path="res://scenes/enemies/drone.gd" id="1_rixhp"]
+[ext_resource type="Shader" uid="uid://ud5e83vgk1pg" path="res://scenes/enemies/drone.gdshader" id="2_4keqv"]
 [ext_resource type="Texture2D" uid="uid://dyfqniwnwwpd5" path="res://graphics/explosions/explosion_3.png" id="3_8vjhw"]
 [ext_resource type="AudioStream" uid="uid://bra042wfgf44a" path="res://audio/solid_impact.ogg" id="5_d742i"]
 [ext_resource type="AudioStream" uid="uid://dm7kyml837s1k" path="res://audio/explosion.wav" id="6_w212b"]
@@ -129,8 +129,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v7iil"]
 _data = {
-"Explosion": SubResource("Animation_fm85q"),
-"RESET": SubResource("Animation_f5xg4")
+&"Explosion": SubResource("Animation_fm85q"),
+&"RESET": SubResource("Animation_f5xg4")
 }
 
 [node name="Drone" type="CharacterBody2D" groups=["Entity"]]
@@ -164,7 +164,7 @@ frame = 23
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_v7iil")
+&"": SubResource("AnimationLibrary_v7iil")
 }
 
 [node name="Node" type="Node" parent="."]
